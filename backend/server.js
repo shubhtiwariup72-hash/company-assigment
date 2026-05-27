@@ -11,20 +11,17 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Reflect the request Origin back as the allowed origin.
-// This works for localhost dev, any Netlify preview URL, and any future domain
-// without needing to maintain an allowlist.
-// NOTE: origin:true + credentials:true is safe here because auth is JWT-based
-// (not cookies that a third-party site could silently attach).
+// Works for localhost, any Netlify preview, and future custom domains.
+// origin:true echoes the Origin header back — the cors package handles
+// OPTIONS preflight automatically, so no separate app.options() needed.
 app.use(
   cors({
-    origin: true,        // echo back whatever Origin header the browser sends
-    credentials: true,  // allow Authorization header + cookies
+    origin: true,        // echo back whatever Origin the browser sends
+    credentials: true,  // allow Authorization header
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// Explicitly handle pre-flight OPTIONS for all routes
-app.options("*", cors({ origin: true, credentials: true }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
