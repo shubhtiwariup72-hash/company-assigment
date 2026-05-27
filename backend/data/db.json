@@ -1,0 +1,40 @@
+{
+  "users": [
+    { "id": "u1", "name": "Admin User", "email": "admin@nopser.com", "password": "Admin@123", "role": "admin", "status": "active", "createdAt": "2026-01-15T10:00:00.000Z" },
+    { "id": "u2", "name": "John Doe", "email": "john@example.com", "password": "Pass@123", "role": "user", "status": "active", "createdAt": "2026-02-01T10:00:00.000Z" },
+    { "id": "u3", "name": "Jane Smith", "email": "jane@example.com", "password": "Pass@123", "role": "user", "status": "inactive", "createdAt": "2026-02-15T10:00:00.000Z" },
+    { "id": "u4", "name": "Bob Wilson", "email": "bob@example.com", "password": "Pass@123", "role": "admin", "status": "active", "createdAt": "2026-03-01T10:00:00.000Z" },
+    { "id": "u5", "name": "Alice Johnson", "email": "alice@example.com", "password": "Pass@123", "role": "user", "status": "active", "createdAt": "2026-03-15T10:00:00.000Z" },
+    { "id": "u6", "name": "Charlie Brown", "email": "charlie@example.com", "password": "Pass@123", "role": "user", "status": "inactive", "createdAt": "2026-04-01T10:00:00.000Z" },
+    { "id": "u7", "name": "Diana Prince", "email": "diana@example.com", "password": "Pass@123", "role": "admin", "status": "active", "createdAt": "2026-04-15T10:00:00.000Z" },
+    { "id": "u8", "name": "Edward Norton", "email": "edward@example.com", "password": "Pass@123", "role": "user", "status": "active", "createdAt": "2026-05-01T10:00:00.000Z" },
+    { "id": "u9", "name": "Fiona Green", "email": "fiona@example.com", "password": "Pass@123", "role": "user", "status": "inactive", "createdAt": "2026-05-15T10:00:00.000Z" },
+    { "id": "u10", "name": "George Miller", "email": "george@example.com", "password": "Pass@123", "role": "user", "status": "active", "createdAt": "2026-06-01T10:00:00.000Z" },
+    { "id": "u11", "name": "Hannah Davis", "email": "hannah@example.com", "password": "Pass@123", "role": "user", "status": "active", "createdAt": "2026-06-15T10:00:00.000Z" },
+    { "id": "u12", "name": "Shubh Tiwari", "email": "shubhtiwariup72@gmail.com", "password": "123456", "role": "user", "status": "inactive", "createdAt": "2026-07-01T10:00:00.000Z" }
+  ],
+  "products": [
+    { "id": "p1", "name": "Laptop Pro 15", "price": 1299.99, "category": "Electronics", "status": "active", "createdAt": "2026-01-10T10:00:00.000Z" },
+    { "id": "p2", "name": "Wireless Mouse", "price": 29.99, "category": "Accessories", "status": "active", "createdAt": "2026-01-20T10:00:00.000Z" },
+    { "id": "p3", "name": "Mechanical Keyboard", "price": 149.99, "category": "Accessories", "status": "active", "createdAt": "2026-02-05T10:00:00.000Z" },
+    { "id": "p4", "name": "4K Monitor", "price": 599.99, "category": "Electronics", "status": "active", "createdAt": "2026-02-15T10:00:00.000Z" },
+    { "id": "p5", "name": "USB-C Hub", "price": 49.99, "category": "Accessories", "status": "inactive", "createdAt": "2026-03-01T10:00:00.000Z" },
+    { "id": "p6", "name": "Noise Canceling Headphones", "price": 299.99, "category": "Audio", "status": "active", "createdAt": "2026-03-15T10:00:00.000Z" },
+    { "id": "p7", "name": "Webcam HD", "price": 79.99, "category": "Electronics", "status": "active", "createdAt": "2026-04-01T10:00:00.000Z" },
+    { "id": "p8", "name": "Standing Desk", "price": 499.99, "category": "Furniture", "status": "active", "createdAt": "2026-04-15T10:00:00.000Z" },
+    { "id": "p9", "name": "Ergonomic Chair", "price": 399.99, "category": "Furniture", "status": "active", "createdAt": "2026-05-01T10:00:00.000Z" },
+    { "id": "p10", "name": "Smart Speaker", "price": 99.99, "category": "Audio", "status": "inactive", "createdAt": "2026-05-15T10:00:00.000Z" },
+    { "id": "p11", "name": "External SSD 1TB", "price": 129.99, "category": "Storage", "status": "active", "createdAt": "2026-06-01T10:00:00.000Z" },
+    { "id": "p12", "name": "LED Desk Lamp", "price": 39.99, "category": "Furniture", "status": "active", "createdAt": "2026-06-15T10:00:00.000Z" }
+  ],
+  "monthlyStats": [
+    { "month": "Jan", "users": 2, "revenue": 4200 },
+    { "month": "Feb", "users": 3, "revenue": 6800 },
+    { "month": "Mar", "users": 4, "revenue": 5200 },
+    { "month": "Apr", "users": 6, "revenue": 8900 },
+    { "month": "May", "users": 8, "revenue": 7300 },
+    { "month": "Jun", "users": 10, "revenue": 11200 },
+    { "month": "Jul", "users": 11, "revenue": 9800 },
+    { "month": "Aug", "users": 12, "revenue": 13500 }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2020": true
+  },
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+  }
+}
