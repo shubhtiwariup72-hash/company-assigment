@@ -98,7 +98,7 @@ const Users = () => {
     return (
       <div className="text-center py-16">
         <p className="text-red-500 font-medium">Failed to load users.</p>
-        <p className="text-gray-400 text-sm mt-1">Check that the backend is running.</p>
+        <p className="text-gray-400 text-sm mt-1">Unable to reach the server. Please try again shortly.</p>
       </div>
     );
   }

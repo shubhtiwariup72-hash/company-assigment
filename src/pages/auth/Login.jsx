@@ -37,7 +37,7 @@ const Login = () => {
     setApiError("");
     try {
       const res = await loginUser({ email: form.email.trim(), password: form.password });
-      login(res.data);
+      login(res.data, form.rememberMe);   // rememberMe controls localStorage vs sessionStorage
       navigate("/dashboard");
     } catch (err) {
       setApiError(err.response?.data?.message || "Login failed. Please try again.");

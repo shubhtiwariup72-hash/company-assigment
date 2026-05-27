@@ -20,7 +20,7 @@ const Dashboard = () => {
     return (
       <div className="text-center py-16">
         <p className="text-red-500 font-medium">Failed to load dashboard data.</p>
-        <p className="text-gray-400 text-sm mt-1">Make sure the backend server is running on port 5000.</p>
+        <p className="text-gray-400 text-sm mt-1">Unable to reach the server. Please try again shortly.</p>
       </div>
     );
   }

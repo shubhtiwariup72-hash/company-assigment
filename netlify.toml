@@ -1,0 +1,10 @@
+# Netlify configuration for React SPA (React Router v6 browser-history mode)
+# Without this, refreshing any page other than "/" returns a 404.
+[build]
+  command   = "npm run build"
+  publish   = "dist"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

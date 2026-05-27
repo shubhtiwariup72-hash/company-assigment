@@ -7,9 +7,11 @@ const AuthProvider = ({ children }) => {
   const [token, setTokenState] = useState(getToken);
   const [user, setUserState] = useState(getUser);
 
-  const login = useCallback((authData) => {
-    setToken(authData.token);
-    setUser(authData.user);
+  // remember=true → localStorage (persists across browser restarts)
+  // remember=false → sessionStorage (cleared when tab/browser closes)
+  const login = useCallback((authData, remember = true) => {
+    setToken(authData.token, remember);
+    setUser(authData.user, remember);
     setTokenState(authData.token);
     setUserState(authData.user);
   }, []);

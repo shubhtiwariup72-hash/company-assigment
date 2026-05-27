@@ -1,13 +1,45 @@
-export const getToken = () => localStorage.getItem("token");
-export const setToken = (token) => localStorage.setItem("token", token);
-export const removeToken = () => localStorage.removeItem("token");
+// Token is stored in localStorage (Remember Me = true) or
+// sessionStorage (Remember Me = false, cleared when tab closes).
+export const getToken = () =>
+  localStorage.getItem("token") || sessionStorage.getItem("token");
+
+export const setToken = (token, remember = true) => {
+  if (remember) {
+    localStorage.setItem("token", token);
+    sessionStorage.removeItem("token");
+  } else {
+    sessionStorage.setItem("token", token);
+    localStorage.removeItem("token");
+  }
+};
+
+export const removeToken = () => {
+  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
+};
 
 export const getUser = () => {
   try {
-    return JSON.parse(localStorage.getItem("authUser")) || null;
+    const raw =
+      localStorage.getItem("authUser") || sessionStorage.getItem("authUser");
+    return JSON.parse(raw) || null;
   } catch {
     return null;
   }
 };
-export const setUser = (user) => localStorage.setItem("authUser", JSON.stringify(user));
-export const removeUser = () => localStorage.removeItem("authUser");
+
+export const setUser = (user, remember = true) => {
+  const raw = JSON.stringify(user);
+  if (remember) {
+    localStorage.setItem("authUser", raw);
+    sessionStorage.removeItem("authUser");
+  } else {
+    sessionStorage.setItem("authUser", raw);
+    localStorage.removeItem("authUser");
+  }
+};
+
+export const removeUser = () => {
+  localStorage.removeItem("authUser");
+  sessionStorage.removeItem("authUser");
+};

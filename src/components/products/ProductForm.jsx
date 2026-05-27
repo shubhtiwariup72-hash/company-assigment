@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 
 const CATEGORIES = ["Electronics", "Accessories", "Audio", "Furniture", "Storage", "Other"];
 const STATUSES = ["active", "inactive"];
 
 const defaultForm = { name: "", price: "", category: "Electronics", status: "active" };
 
-const ProductForm = ({ initialData, onSubmit, onCancel, isLoading }) => {
+const ProductForm = memo(({ initialData, onSubmit, onCancel, isLoading }) => {
   const [form, setForm] = useState(defaultForm);
   const [errors, setErrors] = useState({});
 
@@ -73,6 +73,7 @@ const ProductForm = ({ initialData, onSubmit, onCancel, isLoading }) => {
       </div>
     </form>
   );
-};
+});
 
+ProductForm.displayName = "ProductForm";
 export default ProductForm;

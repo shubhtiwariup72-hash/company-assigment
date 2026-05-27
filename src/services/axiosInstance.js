@@ -5,7 +5,7 @@ import { getToken } from "../utils/storage";
 // In production (Netlify) set VITE_API_URL in Site Settings → Environment Variables.
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
-  timeout: 10000,
+  timeout: 30000,  // 30s — accommodates Render free-tier cold start (~15–25s)
 });
 
 axiosInstance.interceptors.request.use((config) => {
