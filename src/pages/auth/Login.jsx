@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, LogIn, AlertCircle } from "lucide-react";
 import { loginUser } from "../../api/authApi";
@@ -6,7 +6,16 @@ import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
+
+  // Navigate only after the context state has actually committed.
+  // Calling navigate() immediately after login() hits a race: ProtectedRoute
+  // re-renders before setTokenState flushes and sees isAuthenticated=false.
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const [form, setForm] = useState({ email: "", password: "", rememberMe: false });
   const [showPassword, setShowPassword] = useState(false);
@@ -37,8 +46,7 @@ const Login = () => {
     setApiError("");
     try {
       const res = await loginUser({ email: form.email.trim(), password: form.password });
-      login(res.data, form.rememberMe);   // rememberMe controls localStorage vs sessionStorage
-      navigate("/dashboard");
+      login(res.data, form.rememberMe);   // triggers isAuthenticated → useEffect navigates
     } catch (err) {
       setApiError(err.response?.data?.message || "Login failed. Please try again.");
     } finally {
