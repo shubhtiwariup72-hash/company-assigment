@@ -19,7 +19,10 @@ const authenticate = (req, res, next) => {
     if (typeof decoded !== "object" || decoded === null) {
       return res
         .status(401)
-        .json({ success: false, message: "Unauthorized: Invalid token payload" });
+        .json({
+          success: false,
+          message: "Unauthorized: Invalid token payload",
+        });
     }
     req.user = decoded;
     next();

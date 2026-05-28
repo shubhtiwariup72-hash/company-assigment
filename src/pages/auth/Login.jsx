@@ -17,7 +17,11 @@ const Login = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const [form, setForm] = useState({ email: "", password: "", rememberMe: false });
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState("");
@@ -32,7 +36,8 @@ const Login = () => {
   const validate = () => {
     const e = {};
     if (!form.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email address";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      e.email = "Enter a valid email address";
     if (!form.password) e.password = "Password is required";
     return e;
   };
@@ -40,15 +45,24 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
-    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
 
     setIsLoading(true);
     setApiError("");
     try {
-      const res = await loginUser({ email: form.email.trim(), password: form.password });
-      login(res.data, form.rememberMe);   // triggers isAuthenticated → useEffect navigates
+      const res = await loginUser({
+        email: form.email.trim(),
+        password: form.password,
+      });
+
+      login(res.data, form.rememberMe); // triggers isAuthenticated → useEffect navigates
     } catch (err) {
-      setApiError(err.response?.data?.message || "Login failed. Please try again.");
+      setApiError(
+        err.response?.data?.message || "Login failed. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -87,7 +101,9 @@ const Login = () => {
                 value={form.email}
                 onChange={(e) => set("email", e.target.value)}
               />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -106,12 +122,13 @@ const Login = () => {
                   type="button"
                   onClick={() => setShowPassword((p) => !p)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                  tabIndex={-1}
-                >
+                  tabIndex={-1}>
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              )}
             </div>
 
             {/* Remember Me */}
@@ -123,7 +140,9 @@ const Login = () => {
                 checked={form.rememberMe}
                 onChange={(e) => set("rememberMe", e.target.checked)}
               />
-              <label htmlFor="remember" className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
+              <label
+                htmlFor="remember"
+                className="text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
                 Remember me
               </label>
             </div>
@@ -131,8 +150,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-primary w-full justify-center py-2.5 mt-2"
-            >
+              className="btn-primary w-full justify-center py-2.5 mt-2">
               {isLoading ? (
                 <span className="flex items-center gap-2">
                   <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
@@ -148,7 +166,9 @@ const Login = () => {
           </form>
 
           <div className="mt-5 pt-5 border-t border-gray-100 dark:border-gray-700">
-            <p className="text-xs text-center text-gray-500 dark:text-gray-400">Demo credentials</p>
+            <p className="text-xs text-center text-gray-500 dark:text-gray-400">
+              Demo credentials
+            </p>
             <p className="text-xs text-center text-gray-400 dark:text-gray-500 mt-1">
               admin@nopser.com / Admin@123
             </p>
